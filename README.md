@@ -1,16 +1,22 @@
-# Worksuite Tasker Desktop/Mac App
+# Worksuite Tasker Desktop App
 
-Worksuite Tasker is a time tracking application built with [Electron](https://www.electronjs.org/). It interacts with the Worksuite backend so users can log their work hours and automatically capture screenshots during a session.
+Worksuite Tasker is a desktop time tracking application built with [Electron](https://www.electronjs.org/). It interacts with the Worksuite backend so users can log their work hours and automatically capture screenshots during a session.
 
 ## Features
 
-- Login and token storage using **electron-store**.
-- Dashboard for starting and stopping timelogs.
-- Periodic screenshots uploaded to S3 type storage.
-- Idle detection to automatically stop a running timelog.
-- Fetches projects and tasks from Worksuite APIs.
+- Secure login with email/password and token storage using **electron-store**.
+- Dashboard displays current time and lets users clock in or clock out.
+- Project and task selectors with the option to create new tasks.
+- Start and stop timelogs with a live elapsed-time timer.
+- Periodic screenshots captured via Electron and uploaded to Backblaze S3.
+- Idle detection with automatic stop and optional auto-restart of timelogs.
+- Configurable screenshot interval and idle timeout fetched from the backend.
+- Toast notifications for success, warning, and error messages.
 
-Features like screenshot and stop a running timelog was a request by the client 
+## User Interface
+
+- **Login Screen:** Styled form with email and password fields plus a loading spinner while authentication is in progress.
+- **Dashboard:** Welcome card with the user's name and a real-time clock alongside clock-in and clock-out buttons. The “Start Your Task” section provides project and task dropdowns, an optional new task input, start/stop buttons, and an active timer display.
 
 ## Requirements
 
@@ -47,7 +53,3 @@ npm run dist
 - `utils/api.js` – Axios instance that communicates with the Worksuite backend.
 
 The application checks for a stored user token at start up and either loads the login screen or the dashboard accordingly.
-
----
-
-This project does not currently include automated tests. Running `npm test` will show an error because the `test` script is not defined.
